@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+from math import gcd, sqrt
+import sys
+
+def singlerun(g, num):
+    tor = 2
+    har = 2
+
+    while True:
+        tor = g(tor)
+        har = g(g(har))
+        d = gcd(tor - har, num)
+
+        if d == num:
+            return False
+        elif d > 1:
+            return d
+
+def pollardRho(num):
+    if (num % 2) == 0:
+        return 2
+    elif (num % 3) == 0:
+        return 3
+    elif (num % 5) == 0:
+        return 5
+    elif (num % 7) == 0:
+        return 7
+    c = 1
+    while True:
+        def g(x):
+            return ((x**2 + c) % num)
+        d = singlerun(g, num)
+        if d:
+            return d
+        c += 1
+
+def main():
+    if len(sys.argv) != 2:
+        exit()
+    filename = sys.argv[1]
+    file = open(filename, "r")
+    while True:
+        line = file.readline()
+        if not line:
+            break
+        num = int(line)
+        factor1 = pollardRho(num)
+        factor2 = num // factor1
+        print("{}={}*{}".format(num, factor2, factor1))
+main()
