@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-from math import gcd
+from math import gcd, sqrt
 import sys
-
 
 def singlerun(g, num):
     tor = 2
@@ -18,8 +17,6 @@ def singlerun(g, num):
             return d
 
 def pollardRho(num):
-    if (num == 1):
-        return 1
     if (num % 2) == 0:
         return 2
     c = 1
