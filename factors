@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+import sys
+
+def factorize(num=0):
+    i = 2
+    while i < num:
+        if ((num % i) == 0):
+            num1 = i
+            num2 = num // i
+            break
+        else:
+            i+=1
+    print("{}={}*{}".format(num, num2, num1))
+
+def main():
+    if len(sys.argv) != 2:
+        exit()
+    filename = sys.argv[1]
+    file = open(filename, "r")
+    while True:
+        line = file.readline()
+        if not line:
+            break
+        num = int(line)
+        factorize(num)
+main()
