@@ -40,5 +40,5 @@ def main():
         num = int(line)
         factor1 = pollardRho(num)
         factor2 = num // factor1
-        print("{}={}*{}".format(num, factor1, factor2))
+        print("{}={}*{}".format(num, factor2, factor1))
 main()
