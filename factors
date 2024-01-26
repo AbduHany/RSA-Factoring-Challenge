@@ -19,6 +19,12 @@ def singlerun(g, num):
 def pollardRho(num):
     if (num % 2) == 0:
         return 2
+    elif (num % 3) == 0:
+        return 3
+    elif (num % 5) == 0:
+        return 5
+    elif (num % 7) == 0:
+        return 7
     c = 1
     while True:
         def g(x):
